@@ -4,6 +4,13 @@ vdl is a command line interface for downloading videos from Youtube.com and othe
 It's build on top of youtube-dl and focuses on easier usage for common use cases.
 It requires the Python interpreter and is not platform specific.
 
+## Key Features
+- Simple Interface to download videos
+- Default download location customizable via config file, aswell as ability to specify output directory and filename directly
+- Customize default youtube-dl options via config file
+- Download urls from batch file
+- Update dependencies (youtube-dl) easily manually or automatically if option `auto_update` in config is set to `True`
+
 ## Usage
 
 ````
@@ -30,12 +37,20 @@ vdl [OPTIONS] URL [ADDITIONAL URLS]
                       
 ````
 
-## Key Features
-- Simple Interface to download videos
-- Default download location customizable via config file, aswell as ability to specify output directory and filename directly
-- Customize default youtube-dl options via config file
-- Download urls from batch file
-- Update dependencies (youtube-dl) easily manually or automatically if option `auto_update` in config is set to `True`
+## Default Configuration
+config.ini
+````
+[settings]
+outputdir = ~/Downloads/vdl
+auto_update = False
+
+[ytdl_options]
+format = (bestvideo[width>=1920]/bestvideo)+bestaudio/best
+outtmpl = %(title)s_%(id)s.%(ext)s
+prefer_ffmpeg = True
+cachedir = False
+noplaylist = True
+````
 
 ## Examples
 
