@@ -22,6 +22,9 @@ class CLI:
             packageManager = PackageManager()
             packageManager.Upgrade("youtube_dl")
 
+        if args.limit_rate:
+            s_Config.SetRateLimit(args.limit_rate, persistent=False)
+
         if args.url or args.batch_file or args.from_clipboard:
             # Preparation for download
             videoDownloader = VideoDownloader()
@@ -76,6 +79,12 @@ class CLI:
             "--from-clipboard",
             action="store_true",
             help="Get video URL to download from clipboard",
+        )
+        parser.add_argument(
+            "-r",
+            "--limit-rate",
+            type=float,
+            help="Maximum download rate in MB/s",
         )
 
         parser.add_argument(

@@ -30,11 +30,12 @@ vdl [OPTIONS] URL [ADDITIONAL URLS]
   -a BATCH_FILE, --batch-file BATCH_FILE
                         Txt-file containing URLs to download, one URL per line
   --from-clipboard      Get video URL to download from clipboard
+  -r LIMIT_RATE, --limit-rate LIMIT_RATE
+                        Maximum download rate in MB/s
   --set-default-outputdir SET_DEFAULT_OUTPUTDIR
                         Set default directory where downloaded videos will be
                         saved, if no path is specified
   --update              Update vdl and its dependencies
-                      
 ````
 
 ## Default Configuration

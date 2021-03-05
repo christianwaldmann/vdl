@@ -45,6 +45,12 @@ class Config(BaseConfig):
     def GetOutputTemplate(self):
         return self.Get("ytdl_options", "outtmpl")
 
+    def SetRateLimit(self, rate_limit, **kwargs):
+        self.Set("ytdl_options", "ratelimit", rate_limit * 1_000_000, **kwargs)
+
+    def GetRateLimit(self):
+        return self.Get("ytdl_options", "ratelimit")
+
     def GetAutoUpdate(self):
         return self.Get("settings", "auto_update")
 
