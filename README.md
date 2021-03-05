@@ -28,7 +28,9 @@ vdl [OPTIONS] URL [ADDITIONAL URLS]
                         Specify directory where the downloaded video file will
                         be saved
   -a BATCH_FILE, --batch-file BATCH_FILE
-                        Txt-file containing URLs to download, one URL per line
+                        Txt-file containing URLs to download, one URL per
+                        line. Lines starting with a '#' are considered as
+                        comments and ignored.
   --from-clipboard      Get video URL to download from clipboard
   -r LIMIT_RATE, --limit-rate LIMIT_RATE
                         Maximum download rate in MB/s

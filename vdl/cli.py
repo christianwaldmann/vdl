@@ -73,7 +73,7 @@ class CLI:
             "-a",
             "--batch-file",
             type=str,
-            help="Txt-file containing URLs to download, one URL per line",
+            help="Txt-file containing URLs to download, one URL per line. Lines starting with a '#' are considered as comments and ignored.",
         )
         parser.add_argument(
             "--from-clipboard",
