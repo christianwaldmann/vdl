@@ -1,6 +1,7 @@
 from configparser import RawConfigParser
 import os
 from pathlib import Path
+from ast import literal_eval
 
 
 class BaseConfig(RawConfigParser):
@@ -14,9 +15,21 @@ class BaseConfig(RawConfigParser):
 
     def Load(self):
         self.read(self.filepath)
+        # Try to convert all values to python data types
+        for section in self.sections():
+            for key, value in self.items(section):
+                value_converted = self._ConvStringToDatatypeIfPossible(value)
+                if value_converted != value:
+                    self.set(section, key, literal_eval(value))
+
+    def _ConvStringToDatatypeIfPossible(self, string):
+        try:
+            return literal_eval(string)
+        except:
+            return string
 
     def Get(self, section, key, *args, **kwargs):
-        return self.get(section, key, *args, **kwargs)
+        return self._ConvStringToDatatypeIfPossible(self.get(section, key, *args, **kwargs))
 
     def Set(self, section, key, value, persistent=True):
         self.set(section, key, value)
